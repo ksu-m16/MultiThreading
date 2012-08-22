@@ -8,15 +8,15 @@ public class BTest {
 
     public static void main(String[] args) {
     	BTest btest = new BTest();
-    	synchronized(btest){
         btest.test();
-    	}
     }
     
     class CountThread extends Thread{
     	public void run() {
-            for (int i = 0; i < 100*1000*1000; ++i) {                
-                counter++;                
+            for (int i = 0; i < 10*1000*1000; ++i) {       
+            	synchronized(BTest.this) {
+                counter++;    
+            	}
             }
         }
     }
